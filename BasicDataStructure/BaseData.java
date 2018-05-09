@@ -1,4 +1,5 @@
-import java.lang.*;
+package BasicDataStructure;
+
 public class BaseData {
 	public static void main(String[] args) {
 		BaseData data = new BaseData();
@@ -31,7 +32,7 @@ public class BaseData {
 		System.out.print(Double.MAX_VALUE);
 	}
 	/**
-	 * @char类型
+	 * @char类型 ‘’单引号
 	 * 表示单个字符以及部分unicode值
 	 * \b   退格符     \u0008
 	 * \t   制表符     \u0009
@@ -53,7 +54,7 @@ public class BaseData {
 	}
 	/**
 	 * @boolean
-	 * 整型和布尔值不能转换
+	 * 整型和布尔值不能相互转换
 	 */
 	public void BooleanData() {
 		boolean flag = true;
