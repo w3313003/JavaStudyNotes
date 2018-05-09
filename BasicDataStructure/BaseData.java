@@ -14,6 +14,7 @@ public class BaseData {
 	 * Long Short Byte Integer 为包装类
 	 * 数值l/L表示长整型
 	 * 数值前缀0b/0B表示2进制数 0x->十六进制 0->八进制
+	 * Long.valueOf -128 ~ 127间有缓存池
 	 * */
 	public static void IntData() {
 		System.out.println();
