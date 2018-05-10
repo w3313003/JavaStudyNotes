@@ -19,6 +19,8 @@ import java.util.Random;
  * 如果没有初始化类中的域， 将会被自动初始化为默认值（ 0、false 或 null )
  * 如果在编写一个类时没有编写构造器， 那么系统就会提供一个无参数构造器。如果类中提供了至少一个构造器但是没有提供无参数的构造器， 则在构造对象时如果没有提供参数就会被视为不合法
  * 引入其他类的静态域和静态方法 import static path;
+ * 当父类方法加上final修饰符时 子类无法定义方法覆盖此方法. final类中的方法全被定义为final方法。
+ * @注意：在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。特别是如果超类方法是public,子类方法一定要声明为public。
  */
 
 public class Base {
@@ -36,7 +38,9 @@ public class Base {
     }
     public void run() {
         Employee[] staff = new Employee[3];
-        Employee staff1 = new Employee("zj", 100.0, 2018, 3, 12);
+        Employee staff1 = new Manager("zj", 100.0, 2018, 3, 12);
+//        或者上述staff1类型改为Manager
+        ((Manager) staff1).setBonus(500);
         Employee staff2 = new Employee("hym", 100, 2018, 1, 2);
         Employee staff3 = new Employee("child", 50, 2021, 2, 3);
         staff[0] = staff1;
@@ -68,6 +72,7 @@ class Employee {
 
     }
     public Employee(String name, double salary, int year, int month, int day) {
+//        this可以省略 (隐式参数.)name = name; this是指向隐式参数的指针,可复制 不同于super。
         this.name = name;
         this.salary = salary;
         this.hireDay = LocalDate.of(year, month, day);
