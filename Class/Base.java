@@ -1,10 +1,15 @@
 package Class;
 
-import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Random;
 
 /**
+ * @修饰符------
+ * 1 ) 仅对本类可见 private。
+ * 2 ) 对所有类可见 public;
+ * 3 ) 对本包和所有子类可见 protected。
+ * 4 ) 对本包可见 不需要修饰符(default/friendly);
+ * @------
  * static 静态方法/属性 可通过类名直接访问 同时所有实例均共享此属性/方法
  * 对象中的数据称为实例域（ instance field )
  * 操纵数据的过程称为方法（method)
@@ -38,7 +43,7 @@ public class Base {
     }
     public void run() {
         Employee[] staff = new Employee[3];
-        Employee staff1 = new Manager("zj", 100.0, 2018, 3, 12);
+        Employee staff1 =  new Manager("zj", 100.0, 2018, 3, 12);
 //        或者上述staff1类型改为Manager
         ((Manager) staff1).setBonus(500);
         Employee staff2 = new Employee("hym", 100, 2018, 1, 2);
@@ -68,6 +73,7 @@ class Employee {
     public Employee factory(String name, double salary, int year, int month, int day) {
         return new Employee(name, salary, year, month, day);
     }
+//    无参数构造函数 用于子类继承
     public Employee() {
 
     }

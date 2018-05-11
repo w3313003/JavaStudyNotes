@@ -1,6 +1,7 @@
 package Class;
 
 /**
+ * @如果重写了父类构造方法(即父类构造器没有无参数构造方法)，则子类构造器第一行必须调用super
  * @理解方法调用
  * 弄清楚如何在对象上应用方法调用非常重要。下面假设要调用 x.f(args) 隐式参数 x 声明为类 C 的一个对象。下面是调用过程的详细描述：
  * 1. 编译器査看对象的声明类型和方法名。假设调用 x.f(params) 且隐式参数 x 声明为 C类的对象。需要注意的是：有可能存在多个名字为 f,
@@ -47,9 +48,6 @@ package Class;
  * 1 JVM提取manager的实际类型的方法表。既可能是 Employee、Manager 的方法表，也可能是 Employee 类的其他子类的方法表
  * 2 JVM搜索定义 setBonus 签名的类。此时，虚拟机已经知道应该调用哪个方法
  * 3 JVM调用方法
- *
- *
- *
  */
 public class Extends  {
     public static void main(String[] args) {

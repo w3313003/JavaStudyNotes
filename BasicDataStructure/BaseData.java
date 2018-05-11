@@ -15,6 +15,14 @@ public class BaseData {
 	 * 数值l/L表示长整型
 	 * 数值前缀0b/0B表示2进制数 0x->十六进制 0->八进制
 	 * Long.valueOf -128 ~ 127间有缓存池
+	 * 自动装箱 eg: ArrayList<Integer> arr = new ArrayList<>();
+	 * 只需要调用arr.add(3) 将自动地变换成 arr.add(Integer.valueOf(3));
+	 * 自动拆箱: eg
+	 * int n = arr.get(0); 将自动转换为 int n = arr.get(0).intValue();
+	 * 另外， 如果在一个条件表达式中混合使用 Integer 和 Double 类型， Integer 值就会拆箱，提升为 double, 再装箱为 Double:
+	 * Integer n = 1;
+	 * Double x = 2.0;
+	 * System.out.println(true ? n : x); // Prints 1.0
 	 * */
 	public static void IntData() {
 		System.out.println();

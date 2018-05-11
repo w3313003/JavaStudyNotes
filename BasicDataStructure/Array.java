@@ -24,7 +24,7 @@ public class Array {
 		int[] newArr = Arrays.copyOf(_arr, 20);
 //		命令行参数 main()的参数 eg: java Array -g t1 t2 -> arr[0] == -g arr[1] == t1
 		/**
-		 * @java.util.Arrays 常用APi
+		 * @java.util.Arrays 工具类常用APi
 		 * static String toString(type[] a) 返回包含 a 中数据元素的字符串， 这些数据元素被放在括号内， 并用逗号分隔。
 		 * static type copyOf(type[]a ,int length)
 		 * static type copyOfRange(type[]a , int start, int end)

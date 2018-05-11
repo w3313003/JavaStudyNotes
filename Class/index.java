@@ -1,9 +1,5 @@
 package Class;
 
-import static java.lang.Math.*;
-
-import java.util.Arrays;
-
 /**
  * 依赖("use - a")
  * 聚合("has - a")
