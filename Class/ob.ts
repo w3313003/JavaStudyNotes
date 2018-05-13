@@ -1,12 +1,12 @@
-let a: number = 100;
+const a: number = 100;
 interface Test {
     a: number
 }
 let obj = {
-    a: 123
+    a
 }
-function rasie(x: Test): void {
-    x.a = 2;
-};
+function rasie(x: Test) {
+    x.a += 2;
+}
 rasie(obj);
 console.log(obj);

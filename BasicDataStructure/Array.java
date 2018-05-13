@@ -32,8 +32,7 @@ public class Array {
 		 * static void sort(type[] a) 采用优化的快速排序算法对数组进行排序。
 		 * static int binarySearch(type[] a ,type v).
 		 * static int binarySearch(type[]a, int start, int end, type v).
-		 * 采用二分搜索算法查找值 v。如果查找成功， 则返回相应的下标值； 否则， 返回一个
-		 * 负数值 。r -r-1 是为保持 a 有序 v 应插入的位置。
+		 * 采用二分搜索算法查找值 v。如果查找成功， 则返回相应的下标值； 否则， 返回一个负数值 。r -r-1 是为保持 a 有序 v 应插入的位置。
 		 * static void fi11(type[]a , type v) 将数组的所有数据元素值设置为 V。
 		 * static boolean equals(type[]a, type[]b) 如果两个数组大小相同并且下标相同的元素都对应相等返回 true
 		 */

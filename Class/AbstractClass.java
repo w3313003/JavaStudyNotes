@@ -18,19 +18,28 @@ public class AbstractClass {
 }
 abstract class Person {
     public String name;
+    private int age = 231;
     public Person(String name) {
         this.name = name;
     }
-    public abstract String getDescription();
+    public abstract String getDescription(String... str);
 }
 class Student extends Person {
     private String name;
+    private int point = 21;
     public String major = "3";
+    public Student() {
+        super("zj");
+        this.name = "zj";
+    }
     public Student(String name) {
         super(name);
         this.name = name;
     }
-    public String getDescription() {
+    public String getDescription(String... str) {
+        return this.name;
+    }
+    private String getName() {
         return this.name;
     }
 
@@ -54,7 +63,7 @@ class Worker extends Person {
         super(name);
         this.name = name;
     }
-    public String getDescription() {
+    public String getDescription(String... str) {
         return this.name;
     }
 }
