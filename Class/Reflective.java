@@ -1,7 +1,9 @@
 package Class;
 
-import java.lang.reflect.*;
-import java.util.Arrays;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * 反射(Reflection)是Java 程序开发语言的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。
@@ -19,7 +21,7 @@ public class Reflective {
     
     }
     static {
-        Reflective.getModifier();
+        Reflective.getGenericArray();
     }
     /**
      * 获取Class对象的方式
@@ -69,6 +71,7 @@ public class Reflective {
     }
     /**
      * @java.lang.Class api
+     * getComponentType() 返回数组的Class对象
      * 1.获取某个Class对象的方法集合
      * Method[] getDeclaredMethods() 返回类或接口声明的所有方法，包括公共、保护、默认（包）访问和私有方法，但不包括继承的方法。
      * Method[] getMethods() 返回类的所有公用（public）方法，包括其继承类的公用方法。
@@ -95,6 +98,13 @@ public class Reflective {
      * Class[] getParameterTypes ( ) (在Constructor和Method类中) 返回一个用于描述参数类型的 Class 对象数组
      * Class getReturnType( ) ( 在 Method 类 中） 返回一个用于描述返H类型的 Class 对象。
      * int getModifiers() 返回一个用于描述构造器、 方法或域的修饰符的整型数值。使用 Modifier 类中的这个方法可以分析这个返回值。
+     * @Field
+     * Object get(Object obj) 返回 obj 对象中用 Field 对象表示的域值。
+     * void set(Object obj, Object newValue ) 用个新值设置 Obj 对象中 Field 对象表示的域。
+     * @java.Iang.reflect.AccessibleObject Field, Method, Constructor的祖先类
+     * void setAccessible(boolean flag) 为反射对象设置可访问标志。flag 为 true 表明屏蔽 Java 语言的访问检查，使得对象的私有属性也可以被査询和设置
+     * static void setAccessible(AccessibleObject[] array, boolean flag) 是一种设置对象数组可访问标志的快捷方法。
+     * boolean isAccessible( ) 返回反射对象的可访问标志的值。
      */
     public static void getMethods()  {
         Class s1 = Car.class;
@@ -106,7 +116,6 @@ public class Reflective {
             m.invoke(obj,"456");
             Method getBrands = s1.getMethod("getBrands");
             System.out.println(getBrands.invoke(obj));
-            
 //            获取Field字段
             Class<?> cl = car.getClass();
             Field name = cl.getDeclaredField("name");
@@ -123,9 +132,10 @@ public class Reflective {
     }
     public static void getModifier() {
         try {
-            Class<?> car = Car.class;
+            Method o = Car.class.getMethod("hashCode");
+            System.out.println(o.isAccessible());
 //        获取Car的修饰符
-            Method ms = car.getMethod("setBrands", String.class);
+            Method ms = Car.class.getMethod("setBrands", String.class);
             int m = ms.getModifiers();
             System.out.println(m);
         } catch (Exception e) {
@@ -133,24 +143,34 @@ public class Reflective {
         }
         
     }
-//    获取泛型数组
+//    通过反射获取动态数组
     public static void  getGenericArray()  {
+//        try {
+//            Class<?> cls = Class.forName("java.lang.String");
+//            Object arr = Array.newInstance(cls, 5);
+//            Array.set(arr, 0, "java");
+//            Array.set(arr, 1, "javascript");
+//            Array.set(arr, 2,"typescript");
+//            System.out.println(Array.get(arr,1));
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
         try {
-            Class<?> cls = Class.forName("java.lang.String");
-            Object arr = Array.newInstance(cls, 5);
-            Array.set(arr, 0, "java");
-            Array.set(arr, 1, "javascript");
-            Array.set(arr, 2,"typescript");
-            System.out.println(Array.get(arr,1));
+            Car[] car_arr = new Car[20];
+            Car car = new Car("bwn", "20");
+            Car car1 = new Car("benz", "49");
+            car_arr[0] = car;
+            Class Type = car_arr.getClass().getComponentType();
+            int length = Array.getLength(car_arr);
+            Object newarr = Array.newInstance(Type, length);
+            System.arraycopy(car_arr, 0, newarr, 0, length);
+            Array.set(newarr, 1, car1);
+            System.out.println(Array.get(newarr, 1));
         } catch (Exception e) {
             System.out.println(e);
         }
-       
     }
 }
-
-
-
 
 // 测试用例
 class Test {
@@ -204,7 +224,6 @@ class Car extends Test {
     public void setMileage(int mileage) {
         this.mileage = mileage;
     }
-    
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof Car)) return false;
@@ -216,7 +235,6 @@ class Car extends Test {
         if (this.mileage != other.mileage) return false;
         return true;
     }
-    
     public int hashCode() {
         final int PRIME = 59;
         int result = 1;
@@ -225,12 +243,18 @@ class Car extends Test {
         result = result * PRIME + this.mileage;
         return result;
     }
-    
     protected boolean canEqual(Object other) {
         return other instanceof Car;
     }
-    
     public String toString() {
         return "Car(brands=" + this.brands + ", mileage=" + this.mileage + ")";
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

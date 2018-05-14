@@ -2,7 +2,7 @@ package BasicDataStructure;
 
 import java.util.Arrays;
 
-public class Array {
+public class studyArray {
 	public static void main(String[] args) {
 //		创建一个数字数组时所有元素都初始化为0,boolean 数组的元素会初始化为 false 对象数组则初始化位null;
 		int[] arr = new int[100];
