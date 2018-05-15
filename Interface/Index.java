@@ -5,7 +5,7 @@ package Interface;
  * 在接口中定义属性的知识点：
  * 1，属性默认的修饰词是：public static final
  * 2，定义的时候必须初始化。
- * 3，在接口中定义的属性 等同于 常量，接口中不允许定义变量
+ * 3，在接口中定义的属性 等同于 常量，接口中不允许定义变量。
  */
 
 import java.util.Arrays;
@@ -20,13 +20,16 @@ public class Index {
         }
         Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
+        Short s1 = 129;
+        Short s2 = 129;
+        System.out.println(s1 == s2);
     }
-
 }
 
 interface Test {
     String name = "213";
     void move();
+
 }
 
 class Super {
@@ -52,22 +55,6 @@ class Car extends Super implements Comparable<Car> {
 //        类型强转 if params = (Object o) -> Car c = (Car) o;
         return Integer.compare(this.age, o.age);
     }
-    public String getName() {
-        return this.name;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof Car)) return false;
