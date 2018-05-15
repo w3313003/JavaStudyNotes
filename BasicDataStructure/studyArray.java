@@ -30,6 +30,7 @@ public class studyArray {
 		 * static type copyOfRange(type[]a , int start, int end)
 		 * 返回与 a 类型相同的一个数组,其长度为 length 或者 end-start 数组元素为a的值
 		 * static void sort(type[] a) 采用优化的快速排序算法对数组进行排序。
+		 * static void sort(T[] arr, Comparator<T>) 接受一个比较器 比较器是实现了Comparator的类实例 可自定义compare方法.
 		 * static int binarySearch(type[] a ,type v).
 		 * static int binarySearch(type[]a, int start, int end, type v).
 		 * 采用二分搜索算法查找值 v。如果查找成功， 则返回相应的下标值； 否则， 返回一个负数值 。r -r-1 是为保持 a 有序 v 应插入的位置。

@@ -9,6 +9,7 @@ import java.util.Random;
  * 2 ) 对所有类可见 public;
  * 3 ) 对本包和所有子类可见 protected。
  * 4 ) 对本包可见 不需要修饰符(default/friendly);
+ * @注:如果不在同一个包，则超类的protected只能在子类中使用，子类的实例无法直接访问。可在子类方法中通过super.method代理实现
  * @------
  * static 静态方法/属性 可通过类名直接访问 同时所有实例均共享此属性/方法
  * 对象中的数据称为实例域（ instance field )
