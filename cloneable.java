@@ -13,6 +13,7 @@ public class cloneable {
 }
 class Animals implements Cloneable  {
     public String name;
+    private int age = 79;
     public Animals(String name) {
         this.name = name;
     }
