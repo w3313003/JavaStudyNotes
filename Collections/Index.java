@@ -3,6 +3,7 @@ package Collections;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @Collection接口方法
@@ -43,12 +44,11 @@ public class Index {
 		Integer[] arr = { 1, 2, 3, 4, 4, 5, 5, 6, 2, 6, 7, 7, 8, 8, 9, 9,9,0};
 		ArrayList<Integer> list = new ArrayList(Arrays.asList(arr));
 		Iterator<Integer> it = list.iterator();
-		while (it.hasNext()){
-			System.out.println(it.next());
-		}
-	
+		List lis = Arrays.asList(arr);
+		System.out.println(lis.get(2));
+		it.forEachRemaining(v -> System.out.println(v));
 	}
 	public void add(){
-	
+
 	}
 }
